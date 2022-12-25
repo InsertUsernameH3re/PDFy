@@ -1,0 +1,36 @@
+name: Python-Build-Release
+on: [push]
+jobs:
+  Python-Build-Release:
+   runs-on: windows-2019
+   steps:
+     - name: Checkout Project
+       uses: actions/checkout@v3
+     - name: Setup Python
+       uses: actions/setup-python@v4
+       with:
+        python-version: '3.9.1'
+     - name: Install Dependencies
+       run: pip install -r ./requirements.txt
+     - name: Create Build
+       run: pyinstaller main.py --onefile --name PDFy --noconsole
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+        tag_name: V${{ github.RUN_NUMBER }}
+        release_name: Release V${{ github.RUN_NUMBER }}
+        draft: false
+        prerelease: false
+     - name: Upload Release Asset 
+       uses: actions/upload-release-asset@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+         asset_path: dist/PDFy.exe
+         asset_name: PDFy.exe
+         asset_content_type: application/exe
+  
