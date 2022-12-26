@@ -6,8 +6,10 @@ from changeFont import changeFont
 from addImage import addImage
 from savePDF import savePDF
 from loadPDF import loadPDF
+import sys
+import os
 
-fontDir = "./fonts/"
+fontDir = getattr(sys, '_MEIPASS', os.path.dirname(__file__)) + "/fonts/"
 fonts = loadFonts(findFonts(fontDir), fontDir)
 
 def callbackOptionMenu(var, index, mode):
