@@ -3,3 +3,4 @@ Pillow
 PyPDF2
 fpdf2
 pyinstaller
+pyglet
