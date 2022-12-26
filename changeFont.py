@@ -1,2 +1,2 @@
 def changeFont(window, values):
-    window["Textbox"].update(font=(values["Fonts"], 15))
+    window["TextBox"].update(font=(values["Fonts"], values["FontSize"]))

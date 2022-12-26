@@ -8,4 +8,5 @@ def loadFonts(fontsAddName, fontDir):
             pyglet.font.load(font)
         else:
             fonts.remove(font)
+    fonts.sort()
     return fonts
