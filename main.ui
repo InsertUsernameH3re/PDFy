@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1039</width>
+    <width>1066</width>
     <height>751</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PDFy</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -53,6 +53,27 @@
       <property name="horizontalSpacing">
        <number>7</number>
       </property>
+      <item row="1" column="6">
+       <widget class="QSpinBox" name="fontSize">
+        <property name="value">
+         <number>15</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Font size:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="4">
        <widget class="QFontComboBox" name="fontComboBox">
         <property name="enabled">
@@ -77,43 +98,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <widget class="QLineEdit" name="fontSize">
-        <property name="maximumSize">
-         <size>
-          <width>20</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="inputMethodHints">
-         <set>Qt::ImhDigitsOnly</set>
-        </property>
-        <property name="text">
-         <string>15</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Font size:</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="7">
        <spacer name="horizontalSpacer_3">
         <property name="orientation">
@@ -121,18 +105,25 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>10</width>
+          <width>13</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
+      <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <spacer name="horizontalSpacer">
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -142,7 +133,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>110</width>
-          <height>1</height>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -185,6 +176,13 @@
         <property name="documentTitle">
          <string/>
         </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:15pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="overwriteMode">
          <bool>false</bool>
         </property>
@@ -196,8 +194,8 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <spacer name="horizontalSpacer_2">
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -207,7 +205,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>110</width>
-          <height>20</height>
+          <height>1</height>
          </size>
         </property>
        </spacer>
@@ -221,7 +219,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1039</width>
+     <width>1066</width>
      <height>26</height>
     </rect>
    </property>
@@ -237,6 +235,7 @@
      <string>Edit</string>
     </property>
     <addaction name="insertImage"/>
+    <addaction name="merger"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -265,6 +264,11 @@
     <string>Ctrl+Shift+I</string>
    </property>
   </action>
+  <action name="merger">
+   <property name="text">
+    <string>Merge PDF</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>pushButton_2</tabstop>
@@ -272,7 +276,6 @@
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>fontComboBox</tabstop>
-  <tabstop>fontSize</tabstop>
   <tabstop>editor</tabstop>
  </tabstops>
  <resources/>
