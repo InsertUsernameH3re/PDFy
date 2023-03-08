@@ -13,7 +13,7 @@ jobs:
      - name: Install Dependencies
        run: pip install -r ./requirements.txt
      - name: Create Build
-       run: pyinstaller main.py --onefile --name PDFy --noconsole
+       run: pyinstaller main.py --onefile --name PDFy --noconsole --add-data "pdf2htmlex/;pdf2htmlex/"
      - name: Create Release
        id: create_release
        uses: actions/create-release@v1

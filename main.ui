@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1066</width>
-    <height>751</height>
+    <width>1068</width>
+    <height>886</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,26 +29,14 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
-    <property name="spacing">
-     <number>7</number>
-    </property>
-    <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
-    </property>
-    <property name="leftMargin">
-     <number>11</number>
-    </property>
-    <property name="rightMargin">
-     <number>11</number>
-    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
+     <layout class="QGridLayout" name="editGrid" rowstretch="0,0">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <property name="rightMargin">
-       <number>300</number>
+       <number>302</number>
       </property>
       <property name="horizontalSpacing">
        <number>7</number>
@@ -69,6 +57,9 @@
       </item>
       <item row="1" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QPushButton" name="pushButton">
+        <property name="contextMenuPolicy">
+         <enum>Qt::DefaultContextMenu</enum>
+        </property>
         <property name="text">
          <string>PushButton</string>
         </property>
@@ -114,15 +105,31 @@
       <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QPushButton" name="pushButton_2">
         <property name="text">
-         <string>PushButton</string>
+         <string>Table</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="2">
+     <layout class="QGridLayout" name="editorGrid">
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>110</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="3">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -138,7 +145,7 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="2">
        <widget class="QTextEdit" name="editor">
         <property name="enabled">
          <bool>true</bool>
@@ -194,18 +201,113 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="documentInfoGrid">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="rightMargin">
+       <number>815</number>
+      </property>
+      <item row="0" column="2">
+       <widget class="QLabel" name="wordsCounter">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
-       <spacer name="horizontalSpacer">
+       <widget class="QLabel" name="documentInfoLabel">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Document info:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="wordsLabel">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Words:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="charactersCounter">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="charactersLabel">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Characters:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_4">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>110</width>
-          <height>1</height>
+          <width>10</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -219,7 +321,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1066</width>
+     <width>1068</width>
      <height>26</height>
     </rect>
    </property>
@@ -235,10 +337,16 @@ p, li { white-space: pre-wrap; }
      <string>Edit</string>
     </property>
     <addaction name="insertImage"/>
-    <addaction name="merger"/>
+   </widget>
+   <widget class="QMenu" name="utils">
+    <property name="title">
+     <string>Utils</string>
+    </property>
+    <addaction name="pdfMerger"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="utils"/>
   </widget>
   <action name="open">
    <property name="text">
@@ -267,6 +375,11 @@ p, li { white-space: pre-wrap; }
   <action name="merger">
    <property name="text">
     <string>Merge PDF</string>
+   </property>
+  </action>
+  <action name="pdfMerger">
+   <property name="text">
+    <string>Merge PDFS</string>
    </property>
   </action>
  </widget>

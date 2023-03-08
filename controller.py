@@ -1,7 +1,10 @@
-from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtGui import QTextCursor
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtPrintSupport import QPrinter
 import PyPDF2
+import os
+import subprocess
+import re
+from bs4 import BeautifulSoup
 class Controller:
 
         @classmethod
@@ -16,9 +19,25 @@ class Controller:
         @classmethod
         def openPDF(cls, self):
             file, _ = QFileDialog.getOpenFileName(self, "Open PDF File", "", "Pdf Files (*.pdf);;All Files (*)")
-            pdf_reader = PyPDF2.PdfFileReader(file)
-            page = pdf_reader.getPage(0)
-            self.editor.insertPlainText(page.extract_text())
+            if file != "":
+                msg = QMessageBox()
+                msg.setWindowTitle("Loading PDF...")
+                msg.setText("Loading....................................")
+                msg.show()
+                subprocess.call([r"pdf2htmlex\pdf2htmlEX.exe",
+                                 file, "--process-type3=1", "--optimize-tex=1", "--correct-text-visibility=1", r"--data-dir=pdf2htmlex\data"])
+                fileName = file.split(os.altsep)[-1]
+                fileName = fileName.replace(".pdf", ".html")
+                with open(fileName, "r", encoding="utf-8") as f:
+                    parsedHtml = BeautifulSoup(f.read(), "html.parser")
+                    for tag in parsedHtml.find_all(["style", "script", "head"]):
+                        tag.decompose()
+                    for tag in parsedHtml.find_all("div", {"class": "t m0 x3 h3 y3 ff1 fs0 fc0 sc0 ls0"}):
+                        tag.decompose()
+                self.editor.insertHtml(str(parsedHtml))
+                os.remove(fileName)
+                msg.close()      
+                
 
         @classmethod
         def changeFontSize(cls, self):
@@ -27,16 +46,23 @@ class Controller:
     
         @classmethod
         def checkSize(cls, self):
-            print(self.editor.toHtml())
-            if self.editor.fontPointSize() != int(self.fontSize.value()):
+            if self.editor.textCursor().position() == 0:
                 self.editor.setFontPointSize(int(self.fontSize.value()))
+        
+        @classmethod
+        def checkInfo(cls, self):
+            text = self.editor.toPlainText()
+            wordsCount = re.findall(r"\w+", text)
+            charactersCount = re.findall(r"\w", text)
+            self.wordsCounter.setText(str(len(wordsCount)))
+            self.charactersCounter.setText(str(len(charactersCount)))
+
 
         @classmethod
         def insertImage(cls, self):
             file, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files(*.jpg, *.png);;All Files (*)")
-            if file[0] != "":
-                cursor = self.editor.textCursor()
-                cursor.insertImage(file)
+            if file != "":
+                self.editor.insertHtml(f"<img src={file}></img>")
 #----------------------------------------------------PDF Merger------------------------------------------------------
         filepaths = []
         @classmethod

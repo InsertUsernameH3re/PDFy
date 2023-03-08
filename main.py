@@ -16,9 +16,10 @@ class Editor(QMainWindow, main_window.Ui_MainWindow):
         self.insertImage.triggered.connect(lambda: Controller.insertImage(self))
         self.fontSize.setRange(5, 99)
         self.fontSize.valueChanged.connect(lambda: Controller.changeFontSize(self))
+        self.editor.textChanged.connect(lambda: Controller.checkInfo(self))
         self.editor.textChanged.connect(lambda: Controller.checkSize(self))
         self.Merger = Merger()
-        self.merger.triggered.connect(lambda: self.Merger.show())
+        self.pdfMerger.triggered.connect(lambda: self.Merger.show())
         
 class Merger(QMainWindow, merger.Ui_MainWindow):
     def __init__(self):
