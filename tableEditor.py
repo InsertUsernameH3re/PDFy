@@ -23,7 +23,6 @@ class TableEditor(QMainWindow, tableEditor_window.Ui_tableEditor):
                 html += "<td></td>"
             html += "</tr>"
         html += "</table>"
-        print(html)
         self.editor.insertHtml(html)
         self.close()
         

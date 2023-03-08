@@ -104,6 +104,12 @@
       </item>
       <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QPushButton" name="table">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Table</string>
         </property>

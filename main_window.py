@@ -57,6 +57,7 @@ class Ui_MainWindow(object):
         spacerItem = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.editGrid.addItem(spacerItem, 1, 7, 1, 1)
         self.table = QtWidgets.QPushButton(self.centralwidget)
+        self.table.setMaximumSize(QtCore.QSize(50, 16777215))
         self.table.setObjectName("table")
         self.editGrid.addWidget(self.table, 1, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.verticalLayout.addLayout(self.editGrid)
