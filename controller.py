@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QFileDialog, QMessageBox, QMainWindow
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtPrintSupport import QPrinter
 import os
 import subprocess
@@ -39,7 +39,6 @@ class Controller:
                 os.remove(fileName)
                 msg.close()      
                 
-
         @classmethod
         def changeFontSize(cls, self):
             if self.fontSize.value() != "" and int(self.fontSize.value()) > 0:
@@ -57,7 +56,6 @@ class Controller:
             charactersCount = re.findall(r"\w", text)
             self.wordsCounter.setText(str(len(wordsCount)))
             self.charactersCounter.setText(str(len(charactersCount)))
-
 
         @classmethod
         def insertImage(cls, self):

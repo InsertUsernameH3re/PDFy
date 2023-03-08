@@ -9,7 +9,8 @@
 # TODO
 
 - [ ] Resizing and moving images in pages
-- [ ] Add table support
+- [x] Add table support
 - [ ] Add aling text center, left, right
 - [ ] Add hyperlink support
 - [ ] Add Default margin for content
+- [ ] Try pdfkits html to pdf convertor
