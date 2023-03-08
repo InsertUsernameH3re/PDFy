@@ -1,6 +1,6 @@
 import main_window
-import merger
 from controller import Controller
+import merger
 import sys
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
@@ -18,15 +18,8 @@ class Editor(QMainWindow, main_window.Ui_MainWindow):
         self.fontSize.valueChanged.connect(lambda: Controller.changeFontSize(self))
         self.editor.textChanged.connect(lambda: Controller.checkInfo(self))
         self.editor.textChanged.connect(lambda: Controller.checkSize(self))
-        self.Merger = Merger()
+        self.Merger = merger.Merger()
         self.pdfMerger.triggered.connect(lambda: self.Merger.show())
-        
-class Merger(QMainWindow, merger.Ui_MainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.select.clicked.connect(lambda: Controller.getFilePaths(self))
-        self.merge.clicked.connect(lambda: Controller.merge(self))
 
 if __name__ == "__main__":
     app = QApplication([])

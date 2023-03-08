@@ -56,9 +56,9 @@ class Ui_MainWindow(object):
         self.editGrid.addWidget(self.pushButton_3, 1, 2, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         spacerItem = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.editGrid.addItem(spacerItem, 1, 7, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.editGrid.addWidget(self.pushButton_2, 1, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.table = QtWidgets.QPushButton(self.centralwidget)
+        self.table.setObjectName("table")
+        self.editGrid.addWidget(self.table, 1, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.verticalLayout.addLayout(self.editGrid)
         self.editorGrid = QtWidgets.QGridLayout()
         self.editorGrid.setObjectName("editorGrid")
@@ -164,7 +164,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.fontComboBox.currentFontChanged['QFont'].connect(self.editor.setCurrentFont)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.pushButton_2, self.pushButton)
+        MainWindow.setTabOrder(self.table, self.pushButton)
         MainWindow.setTabOrder(self.pushButton, self.pushButton_3)
         MainWindow.setTabOrder(self.pushButton_3, self.pushButton_4)
         MainWindow.setTabOrder(self.pushButton_4, self.fontComboBox)
@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_4.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_3.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_2.setText(_translate("MainWindow", "Table"))
+        self.table.setText(_translate("MainWindow", "Table"))
         self.editor.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

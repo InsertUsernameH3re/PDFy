@@ -103,7 +103,7 @@
        </spacer>
       </item>
       <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="table">
         <property name="text">
          <string>Table</string>
         </property>
@@ -384,7 +384,7 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <tabstops>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>table</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
