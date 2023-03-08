@@ -34,6 +34,8 @@ class Controller:
                         tag.decompose()
                     for tag in parsedHtml.find_all("div", {"class": "t m0 x3 h3 y3 ff1 fs0 fc0 sc0 ls0"}):
                         tag.decompose()
+                    for tag in parsedHtml.find_all("div", {"class": "t m0 x2 h2 y2 ff1 fs0 fc0 sc0 ls0"}):
+                        tag.decompose()
                 self.editor.insertHtml(str(parsedHtml))
                 os.remove(fileName)
                 msg.close()      
