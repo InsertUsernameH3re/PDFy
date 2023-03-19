@@ -24,7 +24,7 @@ class Controller:
                 msg.setText("Loading....................................")
                 msg.show()
                 subprocess.call([r"pdf2htmlex\pdf2htmlEX.exe",
-                                 file, "--process-type3=1", "--optimize-tex=1", "--correct-text-visibility=1", r"--data-dir=pdf2htmlex\data"])
+                                 file, "--process-type3=1", "--optimize-text=1", "--correct-text-visibility=1", r"--data-dir=pdf2htmlex\data"])
                 fileName = file.split(os.altsep)[-1]
                 fileName = fileName.replace(".pdf", ".html")
                 with open(fileName, "r", encoding="utf-8") as f:
@@ -62,4 +62,26 @@ class Controller:
             file, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files(*.jpg, *.png);;All Files (*)")
             if file != "":
                 self.editor.insertHtml(f"<img src={file}></img>")
+        
+        @classmethod
+        def alignCenter(cls, self):
+            cursor = self.editor.textCursor()
+            cursor.insertHtml(f"<p align='center'>{cursor.selectedText()}</p>")
+
+        @classmethod
+        def alignLeft(cls, self):
+            cursor = self.editor.textCursor()
+            cursor.insertHtml(f"<p align='left'>{cursor.selectedText()}</p>")
+
+        @classmethod
+        def alignRight(cls, self):
+            cursor = self.editor.textCursor()
+            cursor.insertHtml(f"<p align='right'>{cursor.selectedText()}</p>")
+
+        @classmethod
+        def insertList(cls, self):
+            cursor = self.editor.textCursor()
+            cursor.insertHtml(f"<ul><li>{cursor.selectedText()}</li></ul>")
+
+            
 

@@ -5,8 +5,8 @@ class Merger(QMainWindow, merger_window.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.select.clicked.connect(lambda: self.getFilePaths())
-        self.merge.clicked.connect(lambda: self.merge())
+        self.select.pressed.connect(lambda: self.getFilePaths())
+        self.merge.pressed.connect(lambda: self.Merge())
 
         self.filepaths = []
 
@@ -19,7 +19,7 @@ class Merger(QMainWindow, merger_window.Ui_MainWindow):
                 self.filepaths.append(file)
             self.labelProgress.setText("Files loaded successfully")
 
-    def merge(self):
+    def Merge(self):
         progress = 0
         self.progress.setValue(progress)
         self.labelProgress.setText("Merging files")
