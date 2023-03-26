@@ -34,7 +34,8 @@ jobs:
 
      - name: Copy EXE files
        run: xcopy .\dist\PDFy.exe .\main-app\
-
+     - name: LS
+       run: ls
      - name: Copy Data
        run: xcopy .\pdf2htmlex\data\ .\main-app\data\
 
