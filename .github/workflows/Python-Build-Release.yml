@@ -25,10 +25,13 @@ jobs:
        run: xcopy dist\PDFy.exe main-app\
 
      - name: Copy Data
-       run: xcopy pdf2htmlex main-app\
+       run: xcopy pdf2htmlex main-app\pdf2htmlex\
+    
+     - name: Copy LICENSE
+       run: xcopy LICENSE main-app\
 
      - name: Remove EXE
-       run: del main-app\pdf2htmlEX.exe
+       run: del main-app\pdf2htmlex\pdf2htmlEX.exe
 
      - name: Create Archive
        run: tar -c -f main-app.tar main-app
