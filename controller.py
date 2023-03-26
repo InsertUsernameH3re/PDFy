@@ -27,7 +27,7 @@ class Controller:
             msg.setText("Loading....................................")
             msg.show()
             subprocess.call([r"pdf2htmlex\pdf2htmlEX.exe",
-                             file, "--process-type3=1", "--optimize-text=1", "--correct-text-visibility=1", r"--data-dir=.\pdf2htmlex\data"])
+                             file, "--process-type3=1", "--optimize-text=1", "--correct-text-visibility=1", r"--data-dir=.\data"])
             fileName = file.split(os.altsep)[-1]
             fileName = fileName.replace(".pdf", ".html")
             with open(fileName, "r", encoding="utf-8") as f:
