@@ -25,10 +25,14 @@ jobs:
        run: xcopy dist\PDFy.exe main-app\
 
      - name: Copy Data
-       run: xcopy pdf2htmlex\data main-app\data\
+       run: xcopy pdf2htmlex main-app\
+
+     - name: Remove EXE
+       run: del main-app\pdf2htmlEX.exe
 
      - name: Create Archive
        run: tar -c -f main-app.tar main-app
+
      - name: Create Release
        id: create_release
        uses: actions/create-release@v1
