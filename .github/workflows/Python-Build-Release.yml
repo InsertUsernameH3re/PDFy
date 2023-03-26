@@ -18,6 +18,17 @@ jobs:
      - name: Create Build
        run: pyinstaller main.py --onefile --name PDFy --noconsole --add-data "pdf2htmlex/;pdf2htmlex/"
 
+     - name: Create Folder
+       run: mkdir main-app
+
+     - name: Copy EXE files
+       run: xcopy dist\PDFy.exe main-app\
+
+     - name: Copy Data
+       run: xcopy pdf2htmlex\data\ main-app\data\
+
+     - name: Create Archive
+       run: tar -c -f main-app.tar main-app
      - name: Create Release
        id: create_release
        uses: actions/create-release@v1
@@ -28,19 +39,6 @@ jobs:
         release_name: Release V${{ github.RUN_NUMBER }}
         draft: false
         prerelease: false
-
-     - name: Create Folder
-       run: mkdir main-app
-
-     - name: Copy EXE files
-       run: xcopy .\dist\PDFy.exe .\main-app\
-     - name: LS
-       run: ls
-     - name: Copy Data
-       run: xcopy .\pdf2htmlex\data\ .\main-app\data\
-
-     - name: Create Archive
-       run: tar -c -f main-app.tar main-app
 
      - name: Upload Release Asset 
        uses: actions/upload-release-asset@v1
