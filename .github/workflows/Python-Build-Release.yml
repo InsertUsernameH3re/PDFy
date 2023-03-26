@@ -6,14 +6,18 @@ jobs:
    steps:
      - name: Checkout Project
        uses: actions/checkout@v3
+
      - name: Setup Python
        uses: actions/setup-python@v4
        with:
         python-version: '3.9.1'
+
      - name: Install Dependencies
        run: pip install -r ./requirements.txt
+
      - name: Create Build
        run: pyinstaller main.py --onefile --name PDFy --noconsole --add-data "pdf2htmlex/;pdf2htmlex/"
+
      - name: Create Release
        id: create_release
        uses: actions/create-release@v1
@@ -24,13 +28,29 @@ jobs:
         release_name: Release V${{ github.RUN_NUMBER }}
         draft: false
         prerelease: false
+
+     - name: Create Folder
+       run: mkdir main-app
+
+     - name: Copy EXE files
+       run: xcopy .\dist\PDFy.exe .\main-app\
+
+     - name: Copy Data
+       run: xcopy .\pdf2htmlex\data\ .\main-app\data\
+
+     - name: Create Archive
+       run: tar -c -f main-app.tar main-app
+
      - name: Upload Release Asset 
        uses: actions/upload-release-asset@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-         asset_path: dist/PDFy.exe
-         asset_name: PDFy.exe
-         asset_content_type: application/exe
+         asset_path: main-app\main-app.tar
+         asset_name: main-app.tar
+         asset_content_type: archive/tar
+
+     - name: Remove Folder
+       run: rm main-app
   

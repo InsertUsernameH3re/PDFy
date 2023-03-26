@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.editor.setFont(font)
         self.editor.setMouseTracking(False)
-        self.editor.setStyleSheet("alignment: {center}")
+        self.editor.setStyleSheet("")
         self.editor.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.editor.setTabChangesFocus(False)
         self.editor.setDocumentTitle("")

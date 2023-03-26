@@ -209,7 +209,7 @@
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">alignment: {center}</string>
+         <string notr="true"/>
         </property>
         <property name="sizeAdjustPolicy">
          <enum>QAbstractScrollArea::AdjustIgnored</enum>
