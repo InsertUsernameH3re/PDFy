@@ -25,7 +25,7 @@ jobs:
        run: xcopy dist\PDFy.exe main-app\
 
      - name: Copy Data
-       run: xcopy pdf2htmlex\data\ main-app\data\
+       run: xcopy pdf2htmlex\data main-app\data\
 
      - name: Create Archive
        run: tar -c -f main-app.tar main-app
