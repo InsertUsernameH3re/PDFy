@@ -14,4 +14,4 @@
 - [x] Add hyperlink support
 - [x] Add Default margin for content
 - [x] Add drag and drop support Dont forget to edit!!!
-- [] Add size constraints for content
+- [ ] Add size constraints for content
