@@ -8,6 +8,11 @@ from bs4 import BeautifulSoup
 class Controller:
     # ----Utilities----
     @classmethod
+    def changeFont(cls, self):
+        self.editor.setFont(self.fontComboBox.font())
+        self.editor.setFontPointSize(int(self.fontSize.value()))
+
+    @classmethod
     def savePDF(cls, self):
         file, _ = QFileDialog.getSaveFileName(
             self, "Save PDF File", "", "Pdf Files (*.pdf);;All Files (*)")
@@ -34,10 +39,9 @@ class Controller:
                 parsedHtml = BeautifulSoup(f.read(), "html.parser")
                 for tag in parsedHtml.find_all(["style", "script", "head"]):
                     tag.decompose()
-                for tag in parsedHtml.find_all("div", {"class": "t m0 x3 h3 y3 ff1 fs0 fc0 sc0 ls0"}):
-                    tag.decompose()
-                for tag in parsedHtml.find_all("div", {"class": "t m0 x2 h2 y2 ff1 fs0 fc0 sc0 ls0"}):
-                    tag.decompose()
+                for tag in parsedHtml.find_all("div"):
+                    if re.search(r"t\s([a-z]+\d+\s)+ls\d+", str(tag)) != None and re.search(r"^\d+$", tag.text) != None:
+                        tag.decompose()
             self.editor.insertHtml(str(parsedHtml))
             os.remove(fileName)
             msg.close()
@@ -87,3 +91,4 @@ class Controller:
     def insertList(cls, self):
         cursor = self.editor.textCursor()
         cursor.insertHtml(f"<ul><li>{cursor.selectedText()}</li></ul>")
+    

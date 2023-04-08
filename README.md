@@ -11,6 +11,7 @@
 - [ ] Resizing and moving images in pages
 - [x] Add table support
 - [ ] Add aling text center, left, right
-- [ ] Add hyperlink support
-- [ ] Add Default margin for content
-- [ ] Try pdfkits html to pdf convertor
+- [x] Add hyperlink support
+- [x] Add Default margin for content
+- [x] Add drag and drop support Dont forget to edit!!!
+- [] Add size constraints for content
