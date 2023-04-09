@@ -4,7 +4,6 @@ import os
 import subprocess
 import re
 from bs4 import BeautifulSoup
-
 class Controller:
     # ----Utilities----
     @classmethod
@@ -31,8 +30,9 @@ class Controller:
             msg.setWindowTitle("Loading PDF...")
             msg.setText("Loading....................................")
             msg.show()
+            CREATE_NO_WINDOW = 0x08000000
             subprocess.call([r"pdf2htmlex\pdf2htmlEX.exe",
-                             file, "--process-type3=1", "--optimize-text=1", "--correct-text-visibility=1", r"--data-dir=.\pdf2htmlex\data"])
+                             file, "--process-type3=1", "--optimize-text=1", "--correct-text-visibility=1", r"--data-dir=.\pdf2htmlex\data"], creationflags=CREATE_NO_WINDOW)
             fileName = file.split(os.altsep)[-1]
             fileName = fileName.replace(".pdf", ".html")
             with open(fileName, "r", encoding="utf-8") as f:
