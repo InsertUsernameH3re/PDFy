@@ -26,7 +26,7 @@ class Controller:
     def openPDF(cls, self):
         file, _ = QFileDialog.getOpenFileName(
             self, "Open PDF File", "", "Pdf Files (*.pdf);;All Files (*)")
-        if file != "":
+        if file != "" and file.endswith(".pdf"):
             msg = QMessageBox()
             msg.setWindowTitle("Loading PDF...")
             msg.setText("Loading....................................")
@@ -69,7 +69,7 @@ class Controller:
     def insertImage(cls, self):
         file, _ = QFileDialog.getOpenFileName(
             self, "Open Image", "", "Image Files(*.jpg, *.png);;All Files (*)")
-        if file != "":
+        if file != "" and file.endswith(".jpg") or file.endswith(".png"):
             self.editor.insertHtml(f"<img src={file}></img>")
 
     @classmethod

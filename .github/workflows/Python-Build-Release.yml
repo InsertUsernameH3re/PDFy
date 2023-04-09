@@ -10,13 +10,13 @@ jobs:
      - name: Setup Python
        uses: actions/setup-python@v4
        with:
-        python-version: '3.9.1'
+        python-version: '3.11.2'
 
      - name: Install Dependencies
-       run: pip install -r ./requirements.txt
+       run: pip install -r ./src/requirements.txt
 
      - name: Create Build
-       run: pyinstaller main.py --onefile --name PDFy --noconsole --add-data "pdf2htmlex/;pdf2htmlex/"
+       run: pyinstaller ./src/main.py --onefile --name PDFy --noconsole --add-data "src/pdf2htmlex/;pdf2htmlex/"
 
      - name: Create Folder
        run: mkdir main-app
@@ -25,7 +25,7 @@ jobs:
        run: xcopy dist\PDFy.exe main-app\
 
      - name: Copy Data
-       run: xcopy pdf2htmlex main-app\pdf2htmlex\ /E/H/C/I
+       run: xcopy src\pdf2htmlex main-app\pdf2htmlex\ /E/H/C/I
     
      - name: Copy LICENSE
        run: xcopy LICENSE main-app\
