@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file './ui/main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMouseTracking(False)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("QMainWindow {background: #90CAF9}")
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -173,6 +173,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.utils.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.fontComboBox.currentFontChanged['QFont'].connect(self.editor.setCurrentFont) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

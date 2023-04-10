@@ -11,6 +11,7 @@ html = "<a href=https://stackoverflow.com/questions/35858340/clickable-hyperlink
 
 class PDFy(QMainWindow, main_window.Ui_MainWindow):
     def __init__(self):
+        Controller.addCustomFont()
         super().__init__()
         self.setupUi(self)
         self.Merger = merger.Merger()

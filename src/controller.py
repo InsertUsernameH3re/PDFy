@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtGui import QFontDatabase
+import pathlib
 import os
 import subprocess
 import re
@@ -8,9 +10,15 @@ class Controller:
     # ----Utilities----
     @classmethod
     def changeFont(cls, self):
-        self.editor.setFont(self.fontComboBox.font())
         self.editor.setFontPointSize(int(self.fontSize.value()))
-
+    
+    @classmethod
+    def addCustomFont(cls):
+        fontPath = r"fonts"
+        if os.path.exists(os.path.abspath(".") + os.sep + fontPath):
+            for file in os.listdir(os.path.abspath(".") + os.sep + fontPath):
+                if file.endswith(".ttf"):
+                    QFontDatabase.addApplicationFont(fontPath.replace(os.sep, "/") + "/" + file)
     @classmethod
     def savePDF(cls, self):
         file, _ = QFileDialog.getSaveFileName(
