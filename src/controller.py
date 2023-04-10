@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtGui import QFontDatabase
-import pathlib
 import os
 import subprocess
 import re
