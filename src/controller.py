@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtGui import QFontDatabase
+from PyQt5.QtCore import Qt
 import os
 import subprocess
 import re
@@ -70,6 +71,7 @@ class Controller:
         charactersCount = re.findall(r"\w", text)
         self.wordsCounter.setText(str(len(wordsCount)))
         self.charactersCounter.setText(str(len(charactersCount)))
+        print(self.editor.toHtml())
 
     # ----Text Editation----
     @classmethod
@@ -81,18 +83,15 @@ class Controller:
 
     @classmethod
     def alignCenter(cls, self):
-        cursor = self.editor.textCursor()
-        cursor.insertHtml(f"<p align='center'>{cursor.selectedText()}</p>")
+        self.editor.setAlignment(Qt.AlignCenter)
 
     @classmethod
     def alignLeft(cls, self):
-        cursor = self.editor.textCursor()
-        cursor.insertHtml(f"<p align='left'>{cursor.selectedText()}</p>")
+        self.editor.setAlignment(Qt.AlignLeft)
 
     @classmethod
     def alignRight(cls, self):
-        cursor = self.editor.textCursor()
-        cursor.insertHtml(f"<p align='right'>{cursor.selectedText()}</p>")
+        self.editor.setAlignment(Qt.AlignRight)
 
     @classmethod
     def insertList(cls, self):
