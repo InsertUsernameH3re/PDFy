@@ -71,7 +71,6 @@ class Controller:
         charactersCount = re.findall(r"\w", text)
         self.wordsCounter.setText(str(len(wordsCount)))
         self.charactersCounter.setText(str(len(charactersCount)))
-        print(self.editor.toHtml())
 
     # ----Text Editation----
     @classmethod
@@ -79,19 +78,19 @@ class Controller:
         file, _ = QFileDialog.getOpenFileName(
             self, "Open Image", "", "Image Files(*.jpg, *.png);;All Files (*)")
         if file != "" and file.endswith(".jpg") or file.endswith(".png"):
-            self.editor.insertHtml(f"<img src={file}></img>")
+            self.editor.insertHtml(f"<br><img src={file}></img>")
 
     @classmethod
     def alignCenter(cls, self):
-        self.editor.setAlignment(Qt.AlignCenter)
+        self.editor.setAlignment(Qt.AlignCenter) #type: ignore
 
     @classmethod
     def alignLeft(cls, self):
-        self.editor.setAlignment(Qt.AlignLeft)
+        self.editor.setAlignment(Qt.AlignLeft) #type: ignore
 
     @classmethod
     def alignRight(cls, self):
-        self.editor.setAlignment(Qt.AlignRight)
+        self.editor.setAlignment(Qt.AlignRight) #type: ignore
 
     @classmethod
     def insertList(cls, self):

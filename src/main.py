@@ -7,8 +7,6 @@ import sys
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
 
-html = "<a href=https://stackoverflow.com/questions/35858340/clickable-hyperlink-in-qtextedit>asdsad</a>"
-
 class PDFy(QMainWindow, main_window.Ui_MainWindow):
     def __init__(self):
         Controller.addCustomFont()
@@ -26,8 +24,8 @@ class PDFy(QMainWindow, main_window.Ui_MainWindow):
         self.insertImage.triggered.connect(lambda: Controller.insertImage(self))
         self.fontSize.setRange(5, 99)
         self.fontSize.valueChanged.connect(lambda: Controller.changeFontSize(self))
-        self.editor.textChanged.connect(lambda: Controller.checkInfo(self))
-        self.editor.textChanged.connect(lambda: Controller.checkSize(self))
+        self.editor.cursorPositionChanged.connect(lambda: Controller.checkInfo(self))
+        self.editor.cursorPositionChanged.connect(lambda: Controller.checkSize(self))
         self.pdfMerger.triggered.connect(lambda: self.Merger.show())
         self.table.pressed.connect(lambda: self.TableEditor.show())
         self.hyperLink.pressed.connect(lambda: self.HyperLinkEditor.show())

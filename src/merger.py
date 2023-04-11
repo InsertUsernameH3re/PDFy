@@ -23,14 +23,14 @@ class Merger(QMainWindow, merger_window.Ui_MainWindow):
         progress = 0
         self.progress.setValue(progress)
         self.labelProgress.setText("Merging files")
-        pdf_write = PyPDF2.PdfFileWriter()
+        pdf_write = PyPDF2.PdfWriter()
 
         for path in self.filepaths:
-            progress += 90 / len(self.filepaths)
+            progress += 90 // len(self.filepaths)
             self.progress.setValue(progress)
-            pdf_reader = PyPDF2.PdfFileReader(path)
-            for page in range(pdf_reader.getNumPages()):
-                pdf_write.addPage(pdf_reader.getPage(page))
+            pdf_reader = PyPDF2.PdfReader(path)
+            for page in range(len(pdf_reader.pages)):
+                pdf_write.add_page(pdf_reader.pages[page])
 
         with open("merged.pdf", "wb") as f:
             pdf_write.write(f)

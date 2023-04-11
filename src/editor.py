@@ -16,7 +16,7 @@ class Editor(QtWidgets.QTextEdit):
         data = str(event.mimeData().text())
         if data.startswith("file"):
             if data.endswith(".png") or data.endswith(".jpg"):
-                self.insertHtml(f"<img src={event.mimeData().text()}></img>")
+                self.insertHtml(f"<br><img src={event.mimeData().text()}></img>")
             else:
                 self.insertPlainText(data)
         else:
